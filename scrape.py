@@ -33,11 +33,12 @@ match_list = []
 
 # loop through videos in list
 print("Searching for " + pattern + " in transcripts.")
-for video in video_list[:2]:
+for video in video_list:
     # get transcript of video 
     try:
         trans_dict = YouTubeTranscriptApi.get_transcript(video)
         trans_txt = formatter.format_transcript(trans_dict)
+        # perform regex search
         result = re.findall(pattern, trans_txt)
         # if pattern found, append to match list
         if result:
